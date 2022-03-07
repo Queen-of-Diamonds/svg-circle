@@ -1,10 +1,11 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+  <div id="nav"></div>
+  <Sandbox></Sandbox>
 </template>
+
+<script setup>
+import Sandbox from "@/views/Sandbox.vue";
+</script>
 
 <style>
 #app {
