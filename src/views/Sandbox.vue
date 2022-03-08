@@ -17,16 +17,30 @@ import {
 let innerSvg, travellingCircle;
 
 onMounted(() => {
-  travellingCircle = SVG()
-    .addTo("#svg-wrapper")
+  const mainSvg = SVG().addClass("main-svg").addTo("#svg-wrapper");
+  travellingCircle = mainSvg
     .circle(100)
-    .animate(2000, 1000, "now")
+    .rotate(360)
     .attr({
       zIndex: 20,
     })
     .stroke({ color: "green", width: 2 })
-    .fill({ opacity: 0 })
+    .fill({ color: "green", opacity: 100 })
     .opacity(0.5)
-    .move(20, 20);
+    .animate(3000, "easeInOut")
+    .attr({
+      cx: 200,
+      cy: 350,
+      r: 10,
+    });
 });
 </script>
+
+<style>
+#svg-wrapper {
+  overflow: visible;
+}
+#svg-wrapper .main-svg {
+  overflow: visible;
+}
+</style>
