@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { SVG } from "@svgdotjs/svg.js";
+import { Ease, SVG } from "@svgdotjs/svg.js";
 import {
   onMounted,
   ref,
@@ -17,22 +17,25 @@ import {
 let innerSvg, travellingCircle;
 
 onMounted(() => {
-  const mainSvg = SVG().addClass("main-svg").addTo("#svg-wrapper");
+  const mainSvg = SVG().addClass("button").addTo("#svg-wrapper");
+
   travellingCircle = mainSvg
-    .circle(100)
-    .rotate(360)
-    .attr({
-      zIndex: 20,
+    .circle(20)
+    .addClass("innerCircle")
+    .stroke({ color: "#000000", width: 4 })
+    .fill({ color: "none" })
+    .opacity(1)
+    .animate({
+      duration: 1000,
+      delay: 0,
     })
-    .stroke({ color: "green", width: 2 })
-    .fill({ color: "green", opacity: 100 })
+    .stroke({ width: 2 })
     .opacity(0.5)
-    .animate(3000, "easeInOut")
     .attr({
-      cx: 200,
-      cy: 350,
-      r: 10,
-    });
+      r: 50,
+      opacity: 0.2,
+    })
+    .loop();
 });
 </script>
 
@@ -40,7 +43,9 @@ onMounted(() => {
 #svg-wrapper {
   overflow: visible;
 }
-#svg-wrapper .main-svg {
+.button {
   overflow: visible;
+  width: 100px;
+  height: 100px;
 }
 </style>
